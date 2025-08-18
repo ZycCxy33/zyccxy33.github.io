@@ -21,7 +21,7 @@ date: 2025-08-18 00:21:38
 ## 联系方式
 
 如果你想与我交流，可以通过以下方式联系我：
-- 邮箱：your.email@example.com
-- GitHub：https://github.com/yourusername
+- 邮箱：zyccxy33@sjtu.edu.cn
+- GitHub：https://github.com/zyccxy33
 
 期待与你的交流！
