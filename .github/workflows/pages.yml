@@ -1,13 +1,11 @@
-name: Deploy Hexo Blog
+name: Deploy Hexo Blog to GitHub Pages
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -49,7 +47,4 @@ jobs:
         path: ./public
 
     - name: Deploy to GitHub Pages
-      id: deployment
       uses: actions/deploy-pages@v4
-      with:
-        enablement: true
