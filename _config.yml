@@ -96,7 +96,8 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+# 替换掉原来的 theme: next
+remote_theme: iissnan/hexo-theme-next  # 示例：Next 主题的 GitHub 仓库
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
