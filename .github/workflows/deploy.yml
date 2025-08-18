@@ -36,6 +36,13 @@ jobs:
         npm ci
         npm install hexo-cli -g
 
+    - name: Setup Next theme
+      run: |
+        # Copy Next theme from node_modules to themes directory
+        cp -r node_modules/hexo-theme-next themes/next
+        # Verify theme is copied correctly
+        ls -la themes/next/
+
     - name: Generate static files
       run: |
         hexo clean
