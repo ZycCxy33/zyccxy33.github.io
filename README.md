@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Hexo](https://img.shields.io/badge/Hexo-7.0+-0E83C8?style=for-the-badge&logo=hexo&logoColor=white)
-![Next](https://img.shields.io/badge/Theme-Next-8.24-000000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTEyIDJMNi43IDEwLjNjLTEuMSAxLjYtMS44IDMuNS0xLjggNS41IDAgMy4zIDIuNyA2IDYgNmg0LjFjMy4zIDAgNi0yLjcgNi02IDAtMi0uNy0zLjktMS44LTUuNUwxMiAyem0wIDJjMS4xIDAgMiAuOSAyIDJzLS45IDItMiAyLTItLjktMi0yIC45LTIgMi0yem0wIDRjLjYgMCAxIC40IDEgMXMtLjQgMS0xIDEtMS0uNC0xIDEgLjQgMSAxIDF6Ii8+PC9zdmc+)
+![Next Theme Badge](https://img.shields.io/badge/Next-Theme-0070f3?style=for-the-badge&logo=next.js&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
