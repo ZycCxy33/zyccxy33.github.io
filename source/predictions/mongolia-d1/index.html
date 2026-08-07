@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>蒙西电力市场 D+1 实时结算电价预测（XGBoost）</title>
+  <style>
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+           margin: 0; background: #f5f6f8; color: #222; }
+    header { background: #1f2937; color: #fff; padding: 28px 20px; }
+    header h1 { margin: 0 0 6px; font-size: 22px; }
+    header p { margin: 0; color: #cbd5e1; font-size: 13px; }
+    main { max-width: 980px; margin: 0 auto; padding: 20px; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px;
+            padding: 16px 18px; margin-bottom: 16px; }
+    h2 { font-size: 17px; margin: 0 0 10px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #d1d5db; padding: 6px 10px; text-align: right; }
+    th:first-child, td:first-child { text-align: left; }
+    th { background: #f3f4f6; }
+    ul { margin: 6px 0; padding-left: 20px; line-height: 1.8; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .note { color: #6b7280; font-size: 12px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>蒙西电力市场 D+1 实时结算电价预测</h1>
+    <p>XGBoost 滑动窗口模型 · 输入 96 点供需 · 输出 24 点小时价 · 实验 exp_20260806_214320_xgboost_d1_v1_best</p>
+  </header>
+  <main>
+    <div class="card">
+      <h2>交互页面</h2>
+      <ul>
+        <li><a href="00_预测结果汇总.html">00 · 预测结果汇总（总体指标 + 分月/分时/分档表格 + 全部交互图）</a></li>
+        <li><a href="01_预测全周期时序浏览器.html">01 · 全周期时序浏览器（15 分钟真实/预测/误差，底部时间轴）</a></li>
+        <li><a href="02_误差时序浏览器.html">02 · 误差时序浏览器（误差 + 7 日滚动均值 + 真实价）</a></li>
+        <li><a href="03_预测质量散点与误差分布.html">03 · 预测质量散点与误差分布</a></li>
+        <li><a href="04_分时段与分月误差画像.html">04 · 分时段与分月误差画像</a></li>
+      </ul>
+      <p class="note">页面为自包含 HTML（内置 Plotly.js），离线可打开；支持滚轮/框选缩放、悬停查看、图例开关。</p>
+    </div>
+
+    <div class="card">
+      <h2>总体指标</h2>
+      <table>
+        <tr><th>口径</th><th>MAE（元/MWh）</th><th>RMSE</th><th>WAPE</th><th>R²</th></tr>
+        <tr><td>全期 15 分钟（41,952 点，2025-05-01 ～ 2026-07-12）</td><td>109.14</td><td>160.72</td><td>39.28%</td><td>0.584</td></tr>
+        <tr><td>测试期 24 点小时（4,609 小时，2026-01-01 ～ 2026-07-12）</td><td>102.86</td><td>137.04</td><td>42.30%</td><td>0.552</td></tr>
+      </table>
+      <p class="note">注：15 分钟口径的标签为小时价线性插值（与原小时价存在约 25 的平均偏差）；24 点小时口径以原小时真实价为基准。蒙西没有标准日前市场出清，实时结算价是预测口径。</p>
+    </div>
+
+    <div class="card">
+      <h2>主要误差模式</h2>
+      <ul>
+        <li><b>高价低估</b>：真实价 ≥500 元/MWh 档 MAE 255.5、平均偏差 −197；≥1000 档偏差 −577。</li>
+        <li><b>晚高峰低估</b>：18–20 点 MAE 123–132，18 点平均偏差 −20。</li>
+        <li><b>负价漏报</b>：真实价 ≤0 段预测为正（平均偏差 +98 左右）。</li>
+        <li><b>分月最差</b>：2025-06、2025-10 的 MAE 最高（≈173）。</li>
+      </ul>
+    </div>
+
+    <div class="card note">
+      生成：2026-08-07 · 数据源 ODS 11 表（截至 2026-07-13）· 复现：<code>notebooks/04_预测结果交互浏览器.ipynb</code>
+    </div>
+  </main>
+</body>
+</html>
